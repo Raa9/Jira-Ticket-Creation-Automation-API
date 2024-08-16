@@ -1,1 +1,1 @@
-                                        Jira Ticket Creation Automation API
+JIRA TICKET CREATION AUTOMATION API
