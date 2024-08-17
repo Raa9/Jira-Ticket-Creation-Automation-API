@@ -15,12 +15,14 @@ def createJira():
     data = request.json
 
     if 'comment' in data and data['comment'].get('body', '').startswith('/jira'):
-        url = "https://raahulyadav763.atlassian.net/rest/api/3/issue"
+        JIRA_URL = os.getenv('JIRA_URL')
         API_TOKEN = os.getenv('JIRA_API_TOKEN')
         USER_EMAIL = os.getenv('JIRA_USER_EMAIL')
+        PROJECT_KEY = os.getenv('PROJECT_KEY')
+        ISSUE_TYPE_ID = os.getenv('ISSUE_TYPE_ID')
 
-        if not API_TOKEN or not USER_EMAIL:
-            return jsonify({"message": "API token or user email is missing."}), 500
+        if not all([JIRA_URL, API_TOKEN, USER_EMAIL, PROJECT_KEY, ISSUE_TYPE_ID]):
+            return jsonify({"message": "Required environment variables are missing."}), 500
 
         auth = HTTPBasicAuth(USER_EMAIL, API_TOKEN)
 
@@ -47,10 +49,10 @@ def createJira():
                     "version": 1
                 },
                 "project": {
-                    "key": "RT"
+                    "key": PROJECT_KEY
                 },
                 "issuetype": {
-                    "id": "10004"
+                    "id": ISSUE_TYPE_ID
                 },
                 "summary": "create jira",
             },
@@ -58,7 +60,7 @@ def createJira():
         })
 
         response = requests.post(
-            url,
+            JIRA_URL,
             data=payload,
             headers=headers,
             auth=auth
@@ -70,4 +72,3 @@ def createJira():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
-
