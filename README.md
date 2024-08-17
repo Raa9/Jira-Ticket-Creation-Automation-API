@@ -74,7 +74,7 @@ This will start the Flask server on http://0.0.0.0:5000/.
 
 - Set up a webhook in your issue tracking system to send a POST request to the Flask API when a comment is made. The webhook should trigger when the comment body starts with /jira.
 
-## Triggering JIRA Ticket Creation
+### Triggering JIRA Ticket Creation
 When a comment starts with /jira, the Flask API will create a JIRA ticket using the information provided.
 
 
