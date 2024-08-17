@@ -31,5 +31,31 @@ Install the required Python packages using `pip`:
 
 ```bash
 pip install -r requirements.txt
+```
+
+### Configure Environment Variables
+
+go to .env file in the project directory and add your JIRA credentials and other configurations:
+
+```bash
+#listing the .env file
+ls -a
+```
+
+edit the .env file
+```bash
+vi .env
+```
+
+add your credential 
+
+- JIRA_URL=<your-jira-instance-url>
+- JIRA_USERNAME=<your-jira-username>
+- JIRA_API_TOKEN=<your-jira-api-token>
+- PROJECT_KEY=<your-jira-project-key>
+- ISSUE_TYPE=<default-issue-type>
+
+
+
 
 
