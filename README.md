@@ -24,3 +24,13 @@ This project automates the creation of JIRA tickets using a webhook. The system 
 git clone https://github.com/Raa9/Jira-Ticket-Creation-Automation-API.git
 cd Jira-Ticket-Creation-Automation-API
 
+## Install the Dependencies
+
+- Install the required Python packages using pip:
+
+
+pip install -r requirements.txt
+
+pip install -r requirements.txt
+
+
